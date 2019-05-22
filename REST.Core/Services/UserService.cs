@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using REST.Api.Dtos;
 using REST.Core.Interafaces;
@@ -40,6 +41,11 @@ namespace REST.Core.Services
         public void Delete(User user)
         {
             _repository.Delete(user);
+        }
+
+        public bool UserExist(int id)
+        {
+            return _repository.GetAll().Any(u => u.Id == id);
         }
     }
 }

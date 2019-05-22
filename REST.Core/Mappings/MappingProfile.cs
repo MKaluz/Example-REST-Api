@@ -12,6 +12,8 @@ namespace REST.Core.Mappings
         public MappingProfile()
         {
             CreateMap<User, UserDto>();
+            CreateMap<UserForCreationDto, User>();
+            CreateMap<UserForUpdateDto, User>();
         }
     }
 }

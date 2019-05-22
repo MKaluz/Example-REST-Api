@@ -13,6 +13,7 @@ namespace REST.Core.Interafaces
         void Add(User user);
         void Update(User user);
         void Delete(User user);
+        bool UserExist(int id);
 
     }
 }
