@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml;
 using Microsoft.EntityFrameworkCore;
 using REST.Api.Dtos;
 using REST.Core.Interafaces;
@@ -54,6 +55,11 @@ namespace REST.Api.Controllers
             }
 
             var userToAdd = Mapper.Map<User>(userForCreation);
+
+            if (!_userService.UserDataIsVaild(userToAdd))
+            {
+                return BadRequest();
+            }
             _userService.Add(userToAdd);
             var userResult = Mapper.Map<UserDto>(userToAdd);
             
@@ -79,7 +85,10 @@ namespace REST.Api.Controllers
 
             var userEntity = _userService.GetUserById(id);
             Mapper.Map(userForUpdate, userEntity);
-
+            if(!_userService.UserDataIsVaild(userEntity))
+            {
+                return BadRequest();
+            }
             _userService.Update(userEntity);
 
             return NoContent();

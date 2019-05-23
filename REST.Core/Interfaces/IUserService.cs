@@ -15,5 +15,7 @@ namespace REST.Core.Interafaces
         void Delete(User user);
         bool UserExist(int id);
 
+        bool UserDataIsVaild(User user);
+
     }
 }

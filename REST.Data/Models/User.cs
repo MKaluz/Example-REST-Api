@@ -16,7 +16,7 @@ namespace REST.Data.Models
         [Required]
         [MaxLength(50)]
         public string Surname { get; set; }
-        [MaxLength(100)]
+        [MaxLength(30)]
         public string FavoriteSport { get; set; }
     }
 }
